@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 import json
 import pandas as pd
 import paho.mqtt.client as mqtt
@@ -138,14 +137,17 @@ def calculate_dashboard_data(todays_price_list,tomorrows_price_list):
 	#creating nice timestamps
 	todays_minimum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todays_minimum_price_hour, minute=0, second=0)
 	todays_maximum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todays_maximum_price_hour, minute=0, second=0)
-	tomorrows_minimum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=tomorrows_minimum_price_hour, minute=0, second=0)
-	tomorrows_maximum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=tomorrows_maximum_price_hour, minute=0, second=0)
-
+	tomorrows_minimum_price_hour = datetime.datetime(year=tomorrow.year, month=tomorrow.month, day=tomorrow.day, hour=tomorrows_minimum_price_hour, minute=0, second=0)
+	tomorrows_maximum_price_hour = datetime.datetime(year=tomorrow.year, month=tomorrow.month, day=tomorrow.day, hour=tomorrows_maximum_price_hour, minute=0, second=0)
+	todaysmin3hblockstart = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todaysmin3hblockstart, minute=0, second=0)
+	todaysmax3hblockstart = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todaysmax3hblockstart, minute=0, second=0)
+	tomorrowsmin3hblockstart = datetime.datetime(year=tomorrow.year, month=tomorrow.month, day=tomorrow.day, hour=tomorrowsmin3hblockstart, minute=0, second=0)
+	tomorrowsmax3hblockstart = datetime.datetime(year=tomorrow.year, month=tomorrow.month, day=tomorrow.day, hour=tomorrowsmax3hblockstart, minute=0, second=0)
 
 
 	#if we have the exact same data for both request that means the data is not available yet and the server responded with the latest available data which is todays
 	global mqtt_dict
-
+	now = datetime.datetime.now().strftime("%Y.%m.%d-%H:%M:%S")
 	if(todays_price_list!=tomorrows_price_list):
 		tomorrows_data_available=True
 
@@ -188,7 +190,8 @@ def calculate_dashboard_data(todays_price_list,tomorrows_price_list):
 				{"topic": "/home/hupx/90daysmaxprice", "value": historical_data[10]},
 				{"topic": "/home/hupx/90daysmaxdate", "value": historical_data[11]},
 
-
+				#update
+				{"topic": "/home/hupx/update", "value": str(now)},
 
 			]
 
