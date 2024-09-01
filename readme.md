@@ -40,7 +40,7 @@ Install Required Python Packages
 Home Assistant Integration
 
     Edit your configuration.yaml based on the one provided to create sensors and sensors for relative timestamps, then restart Home Assistant.
-    set up a cronjob for the data to be updated, once an hour should be more than enough
+    Set up a cronjob for the data to be updated, once an hour should be more than enough
 
 License : For now let's just got with SSPL because I am petty like that.
 
