@@ -202,6 +202,7 @@ def calculate_dashboard_data(todays_price_list,tomorrows_price_list):
 		tomorrows_data_available=False
 		#creating the mqtt dictionary leaving out tomorrows data, so it will go stale in the mqtt broker triggering it to be unavailable
 		mqtt_dict =[
+
 				#todays data
 				{"topic": "/home/hupx/currentprice", "value": current_price},
 				{"topic": "/home/hupx/todaysmineuro", "value": todays_minimum_price},
@@ -228,6 +229,8 @@ def calculate_dashboard_data(todays_price_list,tomorrows_price_list):
 				{"topic": "/home/hupx/90daysmaxprice", "value": historical_data[10]},
 				{"topic": "/home/hupx/90daysmaxdate", "value": historical_data[11]},
 
+				#update
+				{"topic": "/home/hupx/update", "value": str(now)},
 
 
 			]
