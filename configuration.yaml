@@ -1,0 +1,307 @@
+mqtt:
+  sensor:
+    - name: "hupx_current_price"
+      state_topic: "/home/hupx/currentprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_todays_minimum_price"
+      state_topic: "/home/hupx/todaysmineuro"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_todays_minimum_hour"
+      state_topic: "/home/hupx/todaysminhour"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_todays_maximum_price"
+      state_topic: "/home/hupx/todaysmaxeuro"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_todays_maximum_hour"
+      state_topic: "/home/hupx/todaysmaxhour"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_todays_minimum_3hblock_time"
+      state_topic: "/home/hupx/todaysmin3hblockstart"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_todays_minimum_3hblock_average"
+      state_topic: "/home/hupx/todaysmin3hblockaverage"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_todays_maximum_3hblock_time"
+      state_topic: "/home/hupx/todaysmax3hblockstart"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_todays_maximum_3hblock_average"
+      state_topic: "/home/hupx/todaysmax3hblockaverage"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+
+    - name: "hupx_tomorrows_minimum_price"
+      state_topic: "/home/hupx/tomorrowsmineuro"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_tomorrows_minimum_hour"
+      state_topic: "/home/hupx/tomorrowsminhour"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_tomorrows_maximum_price"
+      state_topic: "/home/hupx/tomorrowsmaxeuro"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_tomorrows_maximum_hour"
+      state_topic: "/home/hupx/tomorrowsmaxhour"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_tomorrows_minimum_3hblock_time"
+      state_topic: "/home/hupx/tomorrowsmin3hblockstart"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_tomorrows_minimum_3hblock_average"
+      state_topic: "/home/hupx/tomorrowsmin3hblockaverage"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_tomorrows_maximum_3hblock_time"
+      state_topic: "/home/hupx/tomorrowsmax3hblockstart"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_tomorrows_maximum_3hblock_average"
+      state_topic: "/home/hupx/tomorrowsmax3hblockaverage"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_weekly_min_price"
+      state_topic: "/home/hupx/7daysminprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_weekly_min_price_date"
+      state_topic: "/home/hupx/7daysmindate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_monthly_min_price"
+      state_topic: "/home/hupx/30daysminprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_monthly_min_price_date"
+      state_topic: "/home/hupx/30daysmindate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_quarterly_min_price"
+      state_topic: "/home/hupx/90daysminprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_quarterly_min_price_date"
+      state_topic: "/home/hupx/90daysmindate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_weekly_max_price"
+      state_topic: "/home/hupx/7daysmaxprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_weekly_max_price_date"
+      state_topic: "/home/hupx/7daysmaxdate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_monthly_max_price"
+      state_topic: "/home/hupx/30daysmaxprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_monthly_max_price_date"
+      state_topic: "/home/hupx/30daysmaxdate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_quarterly_max_price"
+      state_topic: "/home/hupx/90daysmaxprice"
+      icon: mdi:cash
+      expire_after: 1200
+      unit_of_measurement: "€/MWh"
+
+    - name: "hupx_quarterly_max_date"
+      state_topic: "/home/hupx/90daysmaxdate"
+      icon: mdi:cash-clock
+      expire_after: 1200
+
+    - name: "hupx_updated"
+      state_topic: "/home/hupx/update"
+      icon: mdi:cash-clock
+      expire_after: 0
+
+
+sensor:
+  - platform: template
+    sensors:
+      hupx_todays_minimum_hour_relative:
+        friendly_name: "Today's Minimum Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_todays_minimum_hour') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_todays_maximum_hour_relative:
+        friendly_name: "Today's maximum Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_todays_maximum_hour') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_todays_minimum3_hour_relative:
+        friendly_name: "Today's minimum 3 Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_todays_minimum_3hblock_time') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_todays_maximum3_hour_relative:
+        friendly_name: "Today's maximum 3 Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_todays_maximum_3hblock_time') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_tomorrows_minimum_hour_relative:
+        friendly_name: "Tomorrow's Minimum Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_tomorrows_minimum_hour') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_tomorrows_maximum_hour_relative:
+        friendly_name: "Tomorrow's maximum Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_tomorrows_maximum_hour') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_tomorrows_minimum_3hour_relative:
+        friendly_name: "Tomorrow's Minimum 3 Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_tomorrows_minimum_3hblock_time') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
+
+      hupx_tomorrows_maximum_3hour_relative:
+        friendly_name: "Tomorrow's maximum 3 Hour (Relative)"
+        value_template: >
+          {% set timestamp_str = states('sensor.hupx_tomorrows_maximum_3hblock_time') %}
+          {% if timestamp_str %}
+            {% set timestamp = strptime(timestamp_str, '%Y-%m-%d %H:%M:%S') %}
+            {% set now = now().replace(tzinfo=None) %}
+            {% set delta = timestamp - now %}
+            {% if delta.total_seconds() > 0 %}
+              In {{ (delta.total_seconds() // 3600) | int }} hours
+            {% else %}
+              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+            {% endif %}
+          {% else %}
+            No valid timestamp
+          {% endif %}
