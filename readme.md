@@ -45,8 +45,9 @@ Home Assistant Integration
 
 License : For now let's just got with SSPL because I am petty like that.
 
-Acknowledgments
+Acknowledgments:
 
     HUPX for asking such an outrageous price that I made this out of spite.
     Home Assistant for its powerful home automation platform.
-    The Armbian community for their help when i got stuck.
+    The Armbian community for their help when I got stuck.
+    My failing sanity for spamming the commit log with fixing typos one by one... 
