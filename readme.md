@@ -2,7 +2,7 @@ HUPX Electricity Data Scraper and Home Assistant Integration
 
 This repository contains a Python script designed to scrape data from HUPX (Hungarian Electricity Exchange) website. The script retrieves day-ahead electricity market prices and historical data from the past 90 days. It then calculates key statistics such as the minimum and maximum prices, along with the dates of the highest and lowest prices over various time increments (7, 30, and 90 days). This can also be customized I just think these make the most sense idk...
 
-The script also integrates with MQTT to publish the scraped data to an MQTT broker. Additionally, a compatible Home Assistant config.yaml is provided to utilize this data within Home Assistant, including creating relative timestamps to be used in  dashboard.
+The script also integrates with MQTT to publish the scraped data to an MQTT broker. Additionally, a compatible Home Assistant config.yaml is provided to utilize this data within Home Assistant, including creating relative timestamps to be used in  a dashboard.
 
 Prerequisites
 
