@@ -294,6 +294,7 @@ def calculate_historical_data():
 		)
 
 calculate_dashboard_data(get_hupx_data(today),get_hupx_data(tomorrow))
-print(calculate_historical_data())
-print(mqtt_dict)
 send_data_via_mqtt("10.36.4.6","mqtt","mqtt",mqtt_dict)
+if(debug):
+	print(mqtt_dict)
+
