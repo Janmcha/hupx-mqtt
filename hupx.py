@@ -83,11 +83,11 @@ def get_hupx_data():
 		print("Div tag with class 'flatpickr-wrap' not found.")
 
 
-	if (max_date>date.today()):
+	if (max_date>datetime.datetime.today().strftime('%Y-%m-%d')):
 		next_days_data_available = True
 	else:
 		next_days_data_available = False
-	
+
 	columns = [col['label'] for col in json_data['cols']]
 
 	# Create DataFrame
@@ -119,7 +119,7 @@ def send_data_via_mqtt(ip,username,password,data):
 	client.disconnect()
 
 
-def create_mqtt_dict();
+def create_mqtt_dict():
 #creating a dictionary from the data to send in send_data_via_mqtt
 	mqtt_dict =[
 		{"topic": "/home/hupx/todaysmineuro", "value": 30},
@@ -139,3 +139,4 @@ def create_mqtt_dict();
 
 
 
+print(get_hupx_data())
