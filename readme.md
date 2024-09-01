@@ -9,7 +9,7 @@ Prerequisites
     Python 3.x
     requests, paho-mqtt, pandas
     MQTT broker (e.g., Mosquitto)
-    Home Assistant
+    Home Assistant (optional)
 
 Installation
 
