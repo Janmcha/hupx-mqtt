@@ -4,9 +4,18 @@ import pandas as pd
 import paho.mqtt.client as mqtt
 import datetime
 from datetime import date, timedelta
+
 debug = False
 today = date.today()
 tomorrow = date.today()+timedelta(days=1)
+
+#mqtt definitions
+ip = "10.36.4.6"
+username = "mqtt"
+password = "mqtt"
+
+
+
 def avg_extremes_index_of_three(numbers):
 
 	# Check if the list has at least three elements
@@ -294,7 +303,7 @@ def calculate_historical_data():
 		)
 
 calculate_dashboard_data(get_hupx_data(today),get_hupx_data(tomorrow))
-send_data_via_mqtt("10.36.4.6","mqtt","mqtt",mqtt_dict)
+send_data_via_mqtt(ip,username,password,mqtt_dict)
 if(debug):
 	print(mqtt_dict)
 
