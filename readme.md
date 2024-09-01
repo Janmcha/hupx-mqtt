@@ -7,6 +7,7 @@ The script also integrates with MQTT to publish the scraped data to an MQTT brok
 Prerequisites
 
     Python 3.x
+    requests, paho-mqtt, pandas
     MQTT broker (e.g., Mosquitto)
     Home Assistant
 
