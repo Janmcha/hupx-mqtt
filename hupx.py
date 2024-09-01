@@ -5,9 +5,9 @@ import pandas as pd
 import paho.mqtt.client as mqtt
 import datetime
 from datetime import date, timedelta
-mqtt_dict = []
 debug = False
-
+today = date.today()
+tomorrow = date.today()+timedelta(days=1)
 def avg_extremes_index_of_three(numbers):
 
 	# Check if the list has at least three elements
@@ -97,19 +97,25 @@ def get_hupx_data(requested_date):
 
 def send_data_via_mqtt(ip,username,password,data):
 
+
+
 	# MQTT setup
 	client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 	client.username_pw_set(username, password)
 	client.connect(ip)
 
 	# Send the processed data
-	client.publish("home/sensors/hupxmin", hupxmin)
+
+	for item in data:
+		client.publish(str(item['topic']), str(item['value']))
+		print(item['topic'],item['value'])
+	#disconnect
 	client.disconnect()
 
 
 
 
-def calculate_required_data(todays_price_list,tomorrows_price_list):
+def calculate_dashboard_data(todays_price_list,tomorrows_price_list):
 
 
 	todays_minimum_price = min(todays_price_list)
@@ -120,7 +126,7 @@ def calculate_required_data(todays_price_list,tomorrows_price_list):
 	tomorrows_maximum_price = max(tomorrows_price_list)
 	tomorrows_minimum_price_hour = tomorrows_price_list.index(min(tomorrows_price_list))
 	tomorrows_maximum_price_hour = tomorrows_price_list.index(max(tomorrows_price_list))
-
+	current_price = todays_price_list[int(datetime.datetime.now().hour)]
 	#get 3 hour block data
 	todaysmin3hblockstart, todaysmin3hblockaverage, todaysmax3hblockstart, todaysmax3hblockaverage = avg_extremes_index_of_three(todays_price_list)
 	tomorrowsmin3hblockstart, tomorrowsmin3hblockaverage, tomorrowsmax3hblockstart, tomorrowsmax3hblockaverage = avg_extremes_index_of_three(tomorrows_price_list)
@@ -129,15 +135,25 @@ def calculate_required_data(todays_price_list,tomorrows_price_list):
 	historical_data = calculate_historical_data()
 
 
+	#creating nice timestamps
+	todays_minimum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todays_minimum_price_hour, minute=0, second=0)
+	todays_maximum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=todays_maximum_price_hour, minute=0, second=0)
+	tomorrows_minimum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=tomorrows_minimum_price_hour, minute=0, second=0)
+	tomorrows_maximum_price_hour = datetime.datetime(year=today.year, month=today.month, day=today.day, hour=tomorrows_maximum_price_hour, minute=0, second=0)
+
+
+
 	#if we have the exact same data for both request that means the data is not available yet and the server responded with the latest available data which is todays
+	global mqtt_dict
+
 	if(todays_price_list!=tomorrows_price_list):
 		tomorrows_data_available=True
 
 
 		#creating the mqtt dictionary
-		global mqtt_dict
 		mqtt_dict =[
 				#todays data
+				{"topic": "/home/hupx/currentprice", "value": current_price},
 				{"topic": "/home/hupx/todaysmineuro", "value": todays_minimum_price},
 				{"topic": "/home/hupx/todaysminhour", "value": todays_minimum_price_hour},
 				{"topic": "/home/hupx/todaysmaxeuro", "value": todays_maximum_price},
@@ -151,7 +167,7 @@ def calculate_required_data(todays_price_list,tomorrows_price_list):
 				{"topic": "/home/hupx/tomorrowsmineuro", "value": tomorrows_minimum_price},
 				{"topic": "/home/hupx/tomorrowsminhour", "value": tomorrows_minimum_price_hour},
 				{"topic": "/home/hupx/tomorrowsmaxeuro", "value": tomorrows_maximum_price},
-				{"topic": "/home/hupx/tomorrowssmaxhour", "value": tomorrows_maximum_price_hour},
+				{"topic": "/home/hupx/tomorrowsmaxhour", "value": tomorrows_maximum_price_hour},
 				{"topic": "/home/hupx/tomorrowsmin3hblockstart", "value": tomorrowsmin3hblockstart},
 				{"topic": "/home/hupx/tomorrowsmin3hblockaverage", "value": tomorrowsmin3hblockaverage},
 				{"topic": "/home/hupx/tomorrowsmax3hblockstart", "value": tomorrowsmax3hblockstart},
@@ -182,9 +198,9 @@ def calculate_required_data(todays_price_list,tomorrows_price_list):
 	else:
 		tomorrows_data_available=False
 		#creating the mqtt dictionary leaving out tomorrows data, so it will go stale in the mqtt broker triggering it to be unavailable
-		global mqtt_dict
 		mqtt_dict =[
 				#todays data
+				{"topic": "/home/hupx/currentprice", "value": current_price},
 				{"topic": "/home/hupx/todaysmineuro", "value": todays_minimum_price},
 				{"topic": "/home/hupx/todaysminhour", "value": todays_minimum_price_hour},
 				{"topic": "/home/hupx/todaysmaxeuro", "value": todays_maximum_price},
@@ -271,5 +287,7 @@ def calculate_historical_data():
 		quarterly_max_price_date
 		)
 
-calculate_required_data(get_hupx_data(date.today()),get_hupx_data(date.today()+timedelta(days=1)))
+calculate_dashboard_data(get_hupx_data(today),get_hupx_data(tomorrow))
 print(calculate_historical_data())
+print(mqtt_dict)
+send_data_via_mqtt("10.36.4.6","mqtt","mqtt",mqtt_dict)
