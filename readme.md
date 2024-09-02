@@ -4,6 +4,9 @@ This repository contains a Python script designed to scrape data from HUPX (Hung
 
 The script also integrates with MQTT to publish the scraped data to an MQTT broker. Additionally, a compatible Home Assistant config.yaml is provided to utilize this data within Home Assistant, including creating relative timestamps to be used in  a dashboard.
 
+![image](https://github.com/user-attachments/assets/6455e6a4-63ac-4dfe-9691-f3c0d6291cb9)
+
+
 Prerequisites
 
     Python 3.x
