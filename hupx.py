@@ -259,6 +259,7 @@ def calculate_historical_data():
 	monthly_max_price = float('-inf')
 	quarterly_max_price = float('-inf')
 
+	#hupx now allowing only 30 days back, might change inh the future if so just adjust the range
 	for i in range(1, 30):
 		prices = get_hupx_data(date.today()-timedelta(days=i))
 		lowest_price = min(prices)
@@ -272,7 +273,7 @@ def calculate_historical_data():
 			monthly_min_price = lowest_price
 			monthly_min_price_date = str(date.today()-timedelta(days=i))
 
-		if(lowest_price<=quarterly_min_price):
+		if(lowest_price<=quarterly_min_price) and i<90:
 			quarterly_min_price = lowest_price
 			quarterly_min_price_date = str(date.today()-timedelta(days=i))
 
@@ -284,7 +285,7 @@ def calculate_historical_data():
 			monthly_max_price = highest_price
 			monthly_max_price_date = str(date.today()-timedelta(days=i))
 
-		if(highest_price>=quarterly_max_price):
+		if(highest_price>=quarterly_max_price) and i<90:
 			quarterly_max_price = highest_price
 			quarterly_max_price_date = str(date.today()-timedelta(days=i))
 
