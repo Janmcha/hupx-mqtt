@@ -116,7 +116,8 @@ def send_data_via_mqtt(ip,username,password,data):
 
 	for item in data:
 		client.publish(str(item['topic']), str(item['value']))
-		print(item['topic'],item['value'])
+		if(debug):
+			print(item['topic'],item['value'])
 	#disconnect
 	client.disconnect()
 
