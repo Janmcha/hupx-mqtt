@@ -1,3 +1,19 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+homeassistant: # Find this row and if it doesn't exists, you can copypaste this whole block to the file.
+  packages: # NEW AND IMPORTANT ROW, NOTE INDENTATION
+    pack_1: !include spot-price.yaml # NEW AND IMPORTANT ROW, NOTE INDENTATION
+  # There might be code here. Leave it as is.
+
 mqtt:
   sensor:
     - name: "hupx_current_price"
@@ -179,9 +195,17 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
@@ -196,14 +220,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_todays_minimum3_hour_relative:
         friendly_name: "Today's minimum 3 Hour (Relative)"
         value_template: >
@@ -213,14 +244,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_todays_maximum3_hour_relative:
         friendly_name: "Today's maximum 3 Hour (Relative)"
         value_template: >
@@ -230,14 +268,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_tomorrows_minimum_hour_relative:
         friendly_name: "Tomorrow's Minimum Hour (Relative)"
         value_template: >
@@ -247,14 +292,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_tomorrows_maximum_hour_relative:
         friendly_name: "Tomorrow's maximum Hour (Relative)"
         value_template: >
@@ -264,14 +316,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_tomorrows_minimum_3hour_relative:
         friendly_name: "Tomorrow's Minimum 3 Hour (Relative)"
         value_template: >
@@ -281,14 +340,21 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
           {% endif %}
-
       hupx_tomorrows_maximum_3hour_relative:
         friendly_name: "Tomorrow's maximum 3 Hour (Relative)"
         value_template: >
@@ -298,9 +364,17 @@ sensor:
             {% set now = now().replace(tzinfo=None) %}
             {% set delta = timestamp - now %}
             {% if delta.total_seconds() > 0 %}
-              In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% if delta.total_seconds() > 3600 %}
+                In {{ (delta.total_seconds() // 3600) | int }} hours
+              {% else %}
+                In {{ (delta.total_seconds() // 60) | int }} minutes
+              {% endif %}
             {% else %}
-              {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% if (now - timestamp).total_seconds() > 3600 %}
+                {{ (now - timestamp).total_seconds() // 3600 | int }} hours ago
+              {% else %}
+                {{ (now - timestamp).total_seconds() // 60 | int }} minutes sago
+              {% endif %}
             {% endif %}
           {% else %}
             No valid timestamp
