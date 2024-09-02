@@ -20,8 +20,8 @@ Clone the Repository
 
     git clone https://github.com/Janmcha/hupx-mqtt
 
-Edit your hupx.py file withyour mqtt brokers data
-Replace the following with your config:
+Edit your hupx.py file with your mqtt broker's data
+Edit the following in your config:
 
     ip = "10.36.4.6"
     username = "mqtt"
