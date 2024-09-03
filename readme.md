@@ -46,7 +46,7 @@ Home Assistant Integration
     Restart Home Assistant.
     Set up a cronjob for the data to be updated, once an hour should be more than enough
 
-License : For now let's just got with SSPL because I am petty like that.
+License : MIT, feel free to use it for free whatever way you see fit.
 
 Acknowledgments:
 
